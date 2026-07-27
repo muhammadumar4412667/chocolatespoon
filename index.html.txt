@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chocolate Spoon | Official Website</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+    <img src="images/logo.jpg" alt="Chocolate Spoon Logo" class="logo">
+
+    <h1>Chocolate Spoon</h1>
+
+    <p>
+        Creating satisfying spoon and chocolate content for YouTube, TikTok,
+        Instagram, and Facebook.
+    </p>
+
+    <a href="#contact" class="btn">Partner With Us</a>
+</header>
+
+<section>
+    <h2>About Us</h2>
+
+    <p>
+        Welcome to Chocolate Spoon! We create engaging short-form videos,
+        satisfying content, and creative entertainment for viewers around
+        the world. We are open to paid partnerships, sponsorships, product
+        reviews, and brand collaborations.
+    </p>
+</section>
+
+<section>
+    <h2>Follow Us</h2>
+
+    <div class="social">
+
+        <a href="https://youtube.com/@chocoletaspoon?si=CGOGATqRrRBn9J0q" target="_blank">
+            YouTube
+        </a>
+
+        <a href="https://www.instagram.com/chocoletaspoon" target="_blank">
+            Instagram
+        </a>
+
+        <a href="https://www.tiktok.com/@chocoletaspoon" target="_blank">
+            TikTok
+        </a>
+
+        <a href="https://www.facebook.com/share/162cV8jFUA6/" target="_blank">
+            Facebook
+        </a>
+
+    </div>
+</section>
+
+<section>
+    <h2>Partner With Chocolate Spoon</h2>
+
+    <p>
+        We work with brands through sponsored videos, product promotions,
+        affiliate campaigns, and long-term partnerships.
+    </p>
+</section>
+
+<section id="contact">
+    <h2>Contact</h2>
+
+    <p>Email us at:</p>
+
+    <a href="mailto:mu644505@gmail.com">
+        <strong>mu644505@gmail.com</strong>
+    </a>
+</section>
+
+<footer>
+    <p>© 2026 Chocolate Spoon. All Rights Reserved.</p>
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>
