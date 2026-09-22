@@ -1,0 +1,1231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Report a Scam — ScamRatio</title>
+
+<style>
+:root{
+  --red:#e51d2a;
+  --red2:#c91420;
+  --text:#202124;
+  --muted:#707780;
+  --field:#f6f7f8;
+  --page:#414142;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  color:var(--text);
+  background:var(--page);
+  line-height:1.5;
+}
+
+a{
+  text-decoration:none;
+  color:inherit;
+}
+
+button,
+input,
+select,
+textarea{
+  font:inherit;
+}
+
+button{
+  cursor:pointer;
+}
+
+
+/* =========================
+   HEADER / NAVIGATION
+========================= */
+
+.nav-wrap{
+  position:sticky;
+  top:14px;
+  z-index:1000;
+  padding:14px 0 0;
+}
+
+.nav{
+  width:min(1240px,calc(100% - 24px));
+  margin:auto;
+  background:rgba(255,255,255,.96);
+  backdrop-filter:blur(18px);
+  border:1px solid rgba(0,0,0,.08);
+  border-radius:18px;
+  box-shadow:0 12px 35px rgba(0,0,0,.10);
+  min-height:76px;
+  padding:10px 14px;
+  display:flex;
+  align-items:center;
+  gap:16px;
+}
+
+
+/* LOGO */
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:9px;
+  min-width:180px;
+  font-weight:900;
+  letter-spacing:-1px;
+}
+
+.logo-mark{
+  width:42px;
+  height:48px;
+  display:block;
+}
+
+.brand-name{
+  font-size:20px;
+}
+
+.brand-name .s{
+  color:var(--red);
+}
+
+
+/* HEADER SEARCH */
+
+.nav-check{
+  flex:1;
+  max-width:430px;
+  position:relative;
+}
+
+.nav-check input{
+  width:100%;
+  height:48px;
+  border:1px solid #ddd;
+  border-radius:12px;
+  padding:0 48px 0 16px;
+  outline:none;
+  background:#fafafa;
+  color:#111;
+}
+
+.nav-check input:focus{
+  border-color:#111;
+  background:#fff;
+}
+
+.search-btn{
+  position:absolute;
+  right:6px;
+  top:6px;
+  border:0;
+  width:36px;
+  height:36px;
+  border-radius:9px;
+  background:#111;
+  color:#fff;
+  cursor:pointer;
+}
+
+.search-btn:hover{
+  background:var(--red);
+}
+
+
+/* DESKTOP MENU */
+
+.nav-links{
+  display:flex;
+  align-items:center;
+  gap:4px;
+  margin-left:auto;
+}
+
+.nav-links a{
+  font-size:13px;
+  font-weight:700;
+  padding:10px 9px;
+  border-radius:9px;
+  white-space:nowrap;
+  transition:.2s ease;
+}
+
+.nav-links a:hover{
+  background:#f1f1f1;
+}
+
+.nav-cta{
+  background:var(--red)!important;
+  color:#fff!important;
+  padding:11px 14px!important;
+}
+
+.nav-cta:hover{
+  background:var(--red2)!important;
+}
+
+
+/* MOBILE MENU BUTTON */
+
+.menu{
+  display:none;
+  border:0;
+  background:#111;
+  color:#fff;
+  border-radius:10px;
+  width:44px;
+  height:44px;
+  font-size:20px;
+}
+
+
+/* =========================
+   PAGE
+========================= */
+
+.page{
+  width:min(100%,1000px);
+  margin:0 auto;
+  background:#fff;
+  min-height:calc(100vh - 76px);
+  padding:58px 70px 80px;
+}
+
+.header{
+  text-align:center;
+  max-width:720px;
+  margin:0 auto 44px;
+}
+
+
+/* SMALL SHIELD */
+
+.brand-small{
+  position:relative;
+  background:linear-gradient(
+    145deg,
+    #111 0 49%,
+    var(--red) 50%
+  );
+  clip-path:polygon(
+    50% 0,
+    100% 14%,
+    100% 67%,
+    50% 100%,
+    0 67%,
+    0 14%
+  );
+
+  width:54px;
+  height:60px;
+  margin:0 auto 20px;
+}
+
+.brand-small:after{
+  content:"";
+  position:absolute;
+  border-left:6px solid #fff;
+  border-bottom:6px solid #fff;
+  transform:rotate(-45deg);
+  width:21px;
+  height:11px;
+  left:13px;
+  top:21px;
+}
+
+
+/* PAGE TITLE */
+
+h1{
+  font-size:40px;
+  line-height:1.12;
+  letter-spacing:-1.5px;
+  margin:0 0 15px;
+}
+
+.header p{
+  font-size:18px;
+  color:var(--muted);
+  margin:0;
+}
+
+
+/* FORM */
+
+.form-section{
+  max-width:720px;
+  margin:auto;
+}
+
+.block{
+  margin-bottom:25px;
+}
+
+.title{
+  font-weight:800;
+  font-size:17px;
+  margin-bottom:11px;
+}
+
+.req{
+  color:var(--red);
+}
+
+.field,
+select,
+textarea{
+  width:100%;
+  border:1px solid transparent;
+  background:var(--field);
+  color:#34383d;
+  padding:17px 20px;
+  outline:0;
+  transition:.2s;
+}
+
+.field{
+  height:58px;
+}
+
+.field:focus,
+select:focus,
+textarea:focus{
+  background:#fff;
+  border-color:#c9cdd2;
+  box-shadow:0 0 0 3px rgba(229,29,42,.08);
+}
+
+select{
+  height:58px;
+}
+
+textarea{
+  min-height:170px;
+  resize:vertical;
+  line-height:1.5;
+}
+
+.field::placeholder,
+textarea::placeholder{
+  color:#9299a0;
+}
+
+
+/* ADD MORE */
+
+.add-more{
+  width:100%;
+  height:48px;
+  margin-top:10px;
+  background:#fff;
+  border:1px solid #90959a;
+  color:#555;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.add-more:hover{
+  border-color:#111;
+  color:#111;
+}
+
+.plus{
+  font-size:22px;
+  vertical-align:-2px;
+  margin-right:7px;
+}
+
+.help{
+  font-size:13px;
+  color:#8b9197;
+  margin-top:8px;
+}
+
+
+/* CHECKBOXES */
+
+.checks{
+  border-top:1px solid #d8dadd;
+  margin-top:32px;
+  padding-top:24px;
+}
+
+.check{
+  display:flex;
+  gap:13px;
+  align-items:flex-start;
+  margin:20px 0;
+  font-size:15px;
+  line-height:1.55;
+  cursor:pointer;
+}
+
+.check input{
+  width:21px;
+  height:21px;
+  flex:0 0 auto;
+  accent-color:var(--red);
+  margin-top:1px;
+}
+
+
+/* SUBMIT BUTTON */
+
+.report-btn{
+  display:block;
+  margin:30px auto 0;
+  min-width:220px;
+  height:56px;
+  border:0;
+  background:#eee;
+  color:#aaa;
+  font-weight:900;
+  cursor:not-allowed;
+  transition:.2s;
+}
+
+.report-btn.ready{
+  background:var(--red);
+  color:#fff;
+  cursor:pointer;
+}
+
+.report-btn.ready:hover{
+  background:var(--red2);
+}
+
+
+/* SUCCESS */
+
+.success{
+  display:none;
+  text-align:center;
+  background:#f2fbf5;
+  border:1px solid #cdebd7;
+  padding:24px;
+  margin-top:26px;
+}
+
+.success.show{
+  display:block;
+}
+
+.success h2{
+  margin:0 0 7px;
+}
+
+.success p{
+  margin:0;
+  color:#59615b;
+}
+
+
+/* =========================
+   MOBILE NAV DROPDOWN
+========================= */
+
+.mobile-open{
+  display:flex!important;
+  position:absolute;
+  top:82px;
+  left:8px;
+  right:8px;
+  background:#fff;
+  padding:10px;
+  border-radius:14px;
+  box-shadow:0 15px 40px rgba(0,0,0,.14);
+  flex-direction:column;
+  align-items:stretch;
+  gap:3px;
+}
+
+.mobile-open a{
+  display:block!important;
+  padding:13px 14px;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:1050px){
+
+  .nav-check{
+    display:none;
+  }
+
+  .nav-links a:nth-child(1),
+  .nav-links a:nth-child(2),
+  .nav-links a:nth-child(3){
+    display:none;
+  }
+
+  .page{
+    width:min(100%,1000px);
+  }
+}
+
+
+@media(max-width:820px){
+
+  .nav-wrap{
+    top:8px;
+  }
+
+  .nav{
+    min-height:64px;
+  }
+
+  .brand{
+    min-width:auto;
+  }
+
+  .menu{
+    display:block;
+    margin-left:auto;
+  }
+
+  .nav-links{
+    display:none;
+  }
+
+  .page{
+    width:100%;
+    padding:42px 22px 60px;
+  }
+
+  h1{
+    font-size:32px;
+  }
+
+  .header p{
+    font-size:16px;
+  }
+}
+
+
+@media(max-width:560px){
+
+  .nav{
+    width:calc(100% - 14px);
+    padding:8px 10px;
+  }
+
+  .brand-name{
+    font-size:17px;
+  }
+
+  .logo-mark{
+    width:35px;
+    height:40px;
+  }
+
+  .page{
+    padding:38px 18px 55px;
+  }
+
+  h1{
+    font-size:30px;
+  }
+
+  .field,
+  select{
+    height:55px;
+  }
+
+  textarea{
+    min-height:150px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+
+<!-- ==================================================
+     HEADER
+================================================== -->
+
+<div class="nav-wrap">
+
+  <nav class="nav">
+
+    <!-- LOGO -->
+    <a class="brand" href="index.html" aria-label="ScamRatio home">
+
+      <svg
+        class="logo-mark"
+        viewBox="0 0 64 72"
+        aria-label="ScamRatio logo"
+      >
+        <path
+          d="M32 3 57 12v22c0 17-10.5 28.8-25 35C17.5 62.8 7 51 7 34V12L32 3Z"
+          fill="#080808"
+        />
+
+        <path
+          d="M32 3 57 12v22c0 17-10.5 28.8-25 35V3Z"
+          fill="#e51d2a"
+        />
+
+        <path
+          d="m18 37 8 8 20-22"
+          fill="none"
+          stroke="#fff"
+          stroke-width="7"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+
+      <span class="brand-name">
+        <span class="s">SCAM</span>RATIO
+      </span>
+
+    </a>
+
+
+    <!-- HEADER SEARCH -->
+    <form class="nav-check" id="navCheckForm">
+
+      <input
+        id="navInput"
+        type="text"
+        placeholder="Paste a link, number, or message to check"
+      >
+
+      <button
+        type="submit"
+        class="search-btn"
+        aria-label="Check"
+      >
+        ↗
+      </button>
+
+    </form>
+
+
+    <!-- DESKTOP MENU -->
+    <div class="nav-links">
+
+      <a
+        href="report.html"
+        style="color:var(--red)"
+      >
+        Report a Scam
+      </a>
+
+      <a href="iq.html">
+        Scam IQ
+      </a>
+
+      <a href="business.html">
+        Business
+      </a>
+
+      <a href="#footer">
+        Login
+      </a>
+
+      <a href="#newsletter">
+        EN
+      </a>
+
+      <a
+        class="nav-cta"
+        href="index.html"
+      >
+        Check Now
+      </a>
+
+    </div>
+
+
+    <!-- MOBILE BUTTON -->
+    <button
+      class="menu"
+      id="mobileMenuButton"
+      type="button"
+      aria-label="Open menu"
+    >
+      ☰
+    </button>
+
+  </nav>
+
+</div>
+
+
+<!-- ==================================================
+     REPORT PAGE
+================================================== -->
+
+<main class="page">
+
+
+  <!-- PAGE HEADER -->
+
+  <section class="header">
+
+    <div class="brand-small"></div>
+
+    <h1>
+      Seen Something Suspicious?
+      <br>
+      Share It to Protect Others.
+    </h1>
+
+    <p>
+      Tell us what happened and help make the online community safer.
+    </p>
+
+  </section>
+
+
+  <!-- REPORT FORM -->
+
+  <form
+    id="reportForm"
+    class="form-section"
+  >
+
+
+    <!-- TARGET -->
+
+    <div class="block">
+
+      <div class="title">
+        Report type &amp; details
+        <span class="req">*</span>
+      </div>
+
+      <input
+        id="target"
+        class="field"
+        required
+        placeholder="Enter website, phone number, email, crypto address or payment link"
+      >
+
+      <button
+        type="button"
+        class="add-more"
+        id="addMore"
+      >
+        <span class="plus">＋</span>
+        Add another detail
+      </button>
+
+      <div id="extra"></div>
+
+    </div>
+
+
+    <!-- CATEGORY -->
+
+    <div class="block">
+
+      <div class="title">
+        Scam category
+        <span class="req">*</span>
+      </div>
+
+      <select
+        id="category"
+        required
+      >
+
+        <option value="">
+          Select a category
+        </option>
+
+        <option>
+          Investment &amp; Financial
+        </option>
+
+        <option>
+          Online Shopping
+        </option>
+
+        <option>
+          Phishing &amp; Account Theft
+        </option>
+
+        <option>
+          Romance &amp; Relationship
+        </option>
+
+        <option>
+          Job &amp; Employment
+        </option>
+
+        <option>
+          Tech Support
+        </option>
+
+        <option>
+          Impersonation
+        </option>
+
+        <option>
+          Crypto &amp; Digital Assets
+        </option>
+
+        <option>
+          Lottery &amp; Prize
+        </option>
+
+        <option>
+          Other
+        </option>
+
+      </select>
+
+    </div>
+
+
+    <!-- SUB CATEGORY -->
+
+    <div class="block">
+
+      <div class="title">
+        Scam sub-category
+      </div>
+
+      <select>
+
+        <option>
+          Choose a sub-category
+        </option>
+
+        <option>
+          Fake investment opportunity
+        </option>
+
+        <option>
+          Fake online store
+        </option>
+
+        <option>
+          Credential theft
+        </option>
+
+        <option>
+          Payment request
+        </option>
+
+        <option>
+          Fake job offer
+        </option>
+
+        <option>
+          Impersonation
+        </option>
+
+        <option>
+          Other
+        </option>
+
+      </select>
+
+    </div>
+
+
+    <!-- MONEY LOST -->
+
+    <div class="block">
+
+      <div class="title">
+        Did you lose money?
+      </div>
+
+      <select>
+
+        <option>
+          No — I lost nothing
+        </option>
+
+        <option>
+          Yes — less than $100
+        </option>
+
+        <option>
+          Yes — $100 to $1,000
+        </option>
+
+        <option>
+          Yes — $1,000 to $10,000
+        </option>
+
+        <option>
+          Yes — more than $10,000
+        </option>
+
+        <option>
+          I'd rather not say
+        </option>
+
+      </select>
+
+    </div>
+
+
+    <!-- STORY -->
+
+    <div class="block">
+
+      <div class="title">
+
+        Tell us more about what happened
+
+        <span class="req">*</span>
+
+      </div>
+
+      <textarea
+        id="story"
+        required
+        placeholder="Start from the beginning. How did you get contacted? What were you asked to do? What happened next?"
+      ></textarea>
+
+      <div class="help">
+        Don't include passwords, private keys, full card numbers, or other sensitive information.
+      </div>
+
+    </div>
+
+
+    <!-- CONSENT -->
+
+    <div class="checks">
+
+      <div class="title">
+        Help protect the community
+      </div>
+
+
+      <label class="check">
+
+        <input type="checkbox">
+
+        <span>
+          Share this report with the ScamRatio community so other people can recognize similar warning signs.
+        </span>
+
+      </label>
+
+
+      <label class="check">
+
+        <input
+          id="consent"
+          type="checkbox"
+          required
+        >
+
+        <span>
+
+          I agree that ScamRatio may analyze the information submitted for scam-prevention and educational purposes.
+
+          <span class="req">*</span>
+
+        </span>
+
+      </label>
+
+
+      <button
+        id="reportBtn"
+        class="report-btn"
+        type="submit"
+        disabled
+      >
+        SUBMIT REPORT
+      </button>
+
+
+      <!-- SUCCESS MESSAGE -->
+
+      <div
+        id="success"
+        class="success"
+      >
+
+        <h2>
+          Report received
+        </h2>
+
+        <p>
+          This is a front-end demo. Connect the form to your backend/database to process real reports.
+        </p>
+
+      </div>
+
+    </div>
+
+  </form>
+
+</main>
+
+
+<!-- ==================================================
+     JAVASCRIPT
+================================================== -->
+
+<script>
+
+/* =========================
+   REPORT FORM
+========================= */
+
+const form =
+  document.getElementById('reportForm');
+
+const target =
+  document.getElementById('target');
+
+const category =
+  document.getElementById('category');
+
+const story =
+  document.getElementById('story');
+
+const consent =
+  document.getElementById('consent');
+
+const btn =
+  document.getElementById('reportBtn');
+
+
+/* UPDATE SUBMIT BUTTON */
+
+function update(){
+
+  const ok =
+    target.value.trim() &&
+    category.value &&
+    story.value.trim() &&
+    consent.checked;
+
+  btn.disabled = !ok;
+
+  btn.classList.toggle(
+    'ready',
+    !!ok
+  );
+}
+
+
+/* LISTEN FOR FORM CHANGES */
+
+[
+  target,
+  category,
+  story,
+  consent
+].forEach(element => {
+
+  element.addEventListener(
+    'input',
+    update
+  );
+
+  element.addEventListener(
+    'change',
+    update
+  );
+
+});
+
+
+/* =========================
+   ADD MORE DETAILS
+========================= */
+
+document
+  .getElementById('addMore')
+  .onclick = function(){
+
+    const wrapper =
+      document.createElement('div');
+
+    wrapper.style.marginTop =
+      '10px';
+
+    wrapper.innerHTML = `
+      <input
+        class="field"
+        placeholder="Add another website, phone number, email, or reference"
+      >
+    `;
+
+    document
+      .getElementById('extra')
+      .appendChild(wrapper);
+
+  };
+
+
+/* =========================
+   REPORT SUBMISSION
+========================= */
+
+form.onsubmit = function(e){
+
+  e.preventDefault();
+
+  if(btn.disabled){
+    return;
+  }
+
+  document
+    .getElementById('success')
+    .classList
+    .add('show');
+
+  btn.textContent =
+    'REPORT SUBMITTED';
+
+  btn.disabled = true;
+
+  btn.classList.remove(
+    'ready'
+  );
+
+  document
+    .getElementById('success')
+    .scrollIntoView({
+      behavior:'smooth',
+      block:'center'
+    });
+
+};
+
+
+/* =========================
+   MOBILE MENU
+========================= */
+
+const mobileButton =
+  document.getElementById(
+    'mobileMenuButton'
+  );
+
+const navLinks =
+  document.querySelector(
+    '.nav-links'
+  );
+
+
+mobileButton.addEventListener(
+  'click',
+  function(){
+
+    navLinks.classList.toggle(
+      'mobile-open'
+    );
+
+    if(
+      navLinks.classList.contains(
+        'mobile-open'
+      )
+    ){
+
+      mobileButton.textContent =
+        '×';
+
+    }else{
+
+      mobileButton.textContent =
+        '☰';
+
+    }
+
+  }
+);
+
+
+/* CLOSE MOBILE MENU
+   AFTER CLICKING A LINK */
+
+document
+  .querySelectorAll('.nav-links a')
+  .forEach(link => {
+
+    link.addEventListener(
+      'click',
+      function(){
+
+        navLinks.classList.remove(
+          'mobile-open'
+        );
+
+        mobileButton.textContent =
+          '☰';
+
+      }
+    );
+
+  });
+
+
+/* =========================
+   HEADER SEARCH
+========================= */
+
+document
+  .getElementById('navCheckForm')
+  .addEventListener(
+    'submit',
+    function(e){
+
+      e.preventDefault();
+
+      const value =
+        document
+          .getElementById('navInput')
+          .value
+          .trim();
+
+      if(!value){
+
+        alert(
+          'Please enter a link, number, or message to check.'
+        );
+
+        return;
+      }
+
+      /*
+        Sends the user to your homepage
+        with the search value.
+      */
+
+      window.location.href =
+        'index.html?check=' +
+        encodeURIComponent(value);
+
+    }
+  );
+
+
+/* INITIAL FORM STATE */
+
+update();
+
+</script>
+
+</body>
+</html>
